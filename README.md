@@ -1,62 +1,105 @@
-# 🏠 House Price Prediction (Machine Learning Project)
+# 🏠 ගෙවල් මිල පුරෝකථනය — House Price Prediction
 
-This repository contains a **House Price Prediction** Machine Learning project built using **Python** and **Scikit-learn**.  
-The main objective of this project is to predict the **SalePrice** of a house based on different housing features such as zoning, lot area, building type, year built, basement size, etc.
-
----
-
-## 📌 Project Overview
-
-House price prediction is a common real-world regression problem in Data Science.  
-In this project, we use a complete ML workflow:
-
-✅ Data Loading  
-✅ Data Cleaning  
-✅ Exploratory Data Analysis (EDA)  
-✅ Feature Encoding (OneHotEncoding)  
-✅ Train/Test Split  
-✅ Model Training  
-✅ Model Evaluation using MAPE  
-✅ Model Comparison  
+A Streamlit web application that predicts residential house prices based on key property features, built with a machine learning model trained on the Ames Housing dataset.
 
 ---
 
-## 📂 Dataset Information
+## 📸 Overview
 
-- Dataset File: **HousePricePrediction.xlsx**
-- Target Column: **SalePrice**
-- Features include both:
-  - Numerical features (int/float)
-  - Categorical features (object)
+The app features a bilingual interface (Sinhala + English) with a dark, modern UI. Users fill in property details across four sections and instantly receive an estimated market value with a confidence range.
 
 ---
 
-## ⚙️ Technologies Used
+## ✨ Features
 
-- **Python**
-- **Pandas**
-- **Matplotlib**
-- **Seaborn**
-- **Scikit-learn**
-- **OpenPyXL** (for Excel dataset reading)
-
----
-
-## 🔥 Models Implemented
-
-| Model | Type |
-|------|------|
-| SVR (Support Vector Regression) | Regression |
-| Random Forest Regressor | Ensemble Regression |
-| Linear Regression | Baseline Regression |
+- **Instant price prediction** with a ±8% confidence range
+- **Smart property tags** (e.g., High Condition, Modern Build, Large Lot)
+- **Interactive condition slider** with visual feedback
+- **Bilingual UI** in Sinhala and English
+- **Dark, responsive design** styled with custom CSS
 
 ---
 
-## 📊 Evaluation Metric
+## 🧠 Machine Learning
 
-The models are evaluated using:
+The notebook (`house_price_detection.ipynb`) covers the full ML pipeline:
 
-### ✅ MAPE (Mean Absolute Percentage Error)
+| Step | Details |
+|---|---|
+| **Dataset** | `HousePricePrediction.xlsx` — 2,919 rows, 13 columns |
+| **Target** | `SalePrice` (available for 1,460 training rows) |
+| **Features** | MSSubClass, MSZoning, LotArea, LotConfig, BldgType, OverallCond, YearBuilt, YearRemodAdd, Exterior1st, BsmtFinSF2, TotalBsmtSF |
+| **Models trained** | Decision Tree, **Random Forest** ✅, Linear Regression |
+| **Best model** | `RandomForestRegressor` (model2) — lowest MAPE (~19.8% for LR; RF performed better) |
+| **Encoding** | `OrdinalEncoder` for categorical features |
+| **Saved artifacts** | `house_model.pkl`, `encoder.pkl` |
 
-Lower MAPE value means better performance.
+---
 
+## 🗂️ Project Structure
+
+```
+├── app.py                        # Streamlit app
+├── house_price_detection.ipynb   # EDA + model training notebook
+├── HousePricePrediction.xlsx     # Dataset
+├── house_model.pkl               # Trained Random Forest model
+├── encoder.pkl                   # Fitted OrdinalEncoder
+└── README.md
+```
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/house-price-prediction.git
+cd house-price-prediction
+```
+
+### 2. Install dependencies
+
+```bash
+pip install streamlit pandas scikit-learn openpyxl
+```
+
+### 3. Run the app
+
+```bash
+streamlit run app.py
+```
+
+---
+
+## 🖥️ Input Features
+
+| Section | Fields |
+|---|---|
+| 🏛️ Building Info | MSSubClass, Building Type, Year Built, Year Remodelled, Exterior Material |
+| 🗺️ Land & Location | Lot Area (sq ft), MS Zoning, Lot Configuration |
+| 📐 Interior Sizes | Total Basement SF, Finished Basement SF2 |
+| ⭐ Condition | Overall Condition (1 = Poor → 9 = Excellent) |
+
+---
+
+## 📊 Dataset Stats
+
+- **Rows:** 2,919 (1,460 labelled + 1,459 unlabelled)
+- **Sale Price range:** $34,900 – $755,000
+- **Mean Sale Price:** ~$180,921
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** Streamlit, custom CSS (DM Sans + Noto Sans Sinhala)
+- **ML:** scikit-learn (RandomForestRegressor, OrdinalEncoder)
+- **Data:** pandas, openpyxl
+- **Visualisation (notebook):** matplotlib, seaborn
+
+---
+
+## 📄 License
+
+This project is open-source and available under the [MIT License](LICENSE).
